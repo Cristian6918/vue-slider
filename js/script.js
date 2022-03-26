@@ -80,6 +80,6 @@ const app=new Vue({
     },
         
 });
-app.scroll();
+app.scroll(); 
  
 
