@@ -26,23 +26,25 @@ const slides = [
     }
 ];
 
-console.log(slides);
+
+
 
 const app=new Vue({
     el:'#app',
     data:{
         slides,
         elemIndex:0,
+        time:3000,
         
     },
     methods:{
         showPrev(){
             if(this.elemIndex>0){
                this.elemIndex--;
-               console.log(this.elemIndex)
+               
         }else{
             this.elemIndex=slides.length-1;
-            console.log(this.elemIndex)
+            
         }
         },
         showNext(){
@@ -53,33 +55,31 @@ const app=new Vue({
              this.elemIndex=0;
          }
         },
-        // showActive:  (slide)=> slide.title===app.data.slides[app.data.elemIndex].title ?'thumb active': 'active'
-
-
-
-
-
+       
         showActive: function(slide){
            if(slide.image===this.slides[this.elemIndex].image){
                return 'thumb active'
            }else{
                return 'thumb'
            }
-        }
+        },
 
+        select: function(slide){
+            this.elemIndex=slides.indexOf(slide);
+        },
+        scroll: function(){
+            interval=setInterval(app.showNext,3000);
+        },
+        stopScroll: function(){
+            clearInterval(interval)
+        },
+       
 
-    
+        
 
     },
-
-    
-
-    
-    
-    
-      
-    
-   
-    
         
 });
+app.scroll();
+ 
+
