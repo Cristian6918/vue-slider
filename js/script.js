@@ -66,6 +66,7 @@ const app=new Vue({
 
         select: function(slide){
             this.elemIndex=slides.indexOf(slide);
+           
         },
         scroll: function(){
             interval=setInterval(app.showNext,3000);
